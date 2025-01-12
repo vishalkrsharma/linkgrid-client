@@ -1,10 +1,13 @@
-import localFont from 'next/font/local';
+import { Lora, Noto_Sans } from 'next/font/google';
 
-export const notoSans = localFont({
-  src: [
-    { path: '../fonts/noto-sans.woff2', weight: '100 900', style: 'normal' },
-    { path: '../fonts/noto-sans.woff', weight: '100 900', style: 'normal' },
-  ],
+export const notoSans = Noto_Sans({
+  subsets: ['latin'],
   display: 'swap',
   variable: '--font-noto-sans',
+});
+
+export const lora = Lora({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-lora',
 });

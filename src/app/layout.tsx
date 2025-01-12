@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { notoSans } from '@/lib/fonts';
+import { lora, notoSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import ThemeDataProvider from '@/providers/theme-provider';
@@ -18,7 +18,13 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={cn(notoSans.variable, 'antialiased font-noto-sans')}>
+      <body
+        className={cn(
+          notoSans.variable,
+          lora.variable,
+          'antialiased font-noto-sans',
+        )}
+      >
         <NextThemeProvider
           attribute='class'
           defaultTheme='dark'

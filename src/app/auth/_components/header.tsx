@@ -1,5 +1,6 @@
 'use client';
 
+import Brand from '@/components/brand';
 import { cn } from '@/lib/utils';
 import { useThemeContext } from '@/providers/theme-provider';
 
@@ -15,7 +16,7 @@ const Header = ({ title, tagline }: { title: string; tagline?: string }) => {
           : 'text-white',
       )}
     >
-      <div className='text-5xl font-black'>{title}</div>
+      <Brand />
       <div>{tagline}</div>
     </header>
   );
