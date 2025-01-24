@@ -10,7 +10,7 @@ import {
 import { useThemeContext } from '@/providers/theme-provider';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
-import { ThemeColors } from '@/types/themes.type';
+import { ThemeColorsType } from '@/types/themes.type';
 
 const availableThemeColors = [
   { name: 'Zinc', light: 'bg-zinc-900', dark: 'bg-zinc-700' },
@@ -30,7 +30,7 @@ export function ThemeColorToggle() {
   const createSelectItems = () => {
     return availableThemeColors.map(({ name, light, dark }) => (
       <SelectItem key={name} value={name}>
-        <div className='flex item-center space-x-3'>
+        <div className='flex item-center gap-4 text-foreground'>
           <div
             className={cn(
               'rounded-full',
@@ -38,7 +38,7 @@ export function ThemeColorToggle() {
               'h-[20px]',
               theme === 'light' ? light : dark,
             )}
-          ></div>
+          />
           <div className='text-sm'>{name}</div>
         </div>
       </SelectItem>
@@ -47,10 +47,10 @@ export function ThemeColorToggle() {
 
   return (
     <Select
-      onValueChange={(value) => setThemeColor(value as ThemeColors)}
+      onValueChange={(value) => setThemeColor(value as ThemeColorsType)}
       defaultValue={themeColor}
     >
-      <SelectTrigger className='w-[180px] ring-offset-transparent focus:ring-transparent'>
+      <SelectTrigger className='w-[180px] bg-background ring-offset-transparent focus:ring-transparent'>
         <SelectValue placeholder='Select Color' />
       </SelectTrigger>
       <SelectContent className='border-muted'>

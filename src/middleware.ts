@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import * as jose from 'jose';
 import { env } from '@/lib/env';
+import { cookies } from 'next/headers';
 
 export const isAuthenticated = async (token?: string): Promise<boolean> => {
   if (!token) return false;
@@ -17,20 +18,20 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value;
   const authRoutes = ['/auth/signin', '/auth/signup'];
   const dashboardRoutes = ['/dashboard'];
+  const cookieStore = await cookies();
 
   const isAuth = await isAuthenticated(token);
 
-  console.log('isAuth:', isAuth);
-
-  // If user is unauthenticated and accessing a protected route
   if (
     !isAuth &&
     dashboardRoutes.some((route) => request.nextUrl.pathname.startsWith(route))
   ) {
+    cookieStore.delete('token');
+    cookieStore.delete('user');
+
     return NextResponse.redirect(new URL('/auth/signin', request.url));
   }
 
-  // If user is authenticated and accessing an auth route
   if (isAuth && authRoutes.includes(request.nextUrl.pathname)) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }

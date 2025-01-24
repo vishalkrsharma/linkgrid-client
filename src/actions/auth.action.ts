@@ -43,3 +43,14 @@ export const signinAction = async (values: SigninFormType) => {
     };
   }
 };
+
+export const signoutAction = async () => {
+  try {
+    const cookieStore = await cookies();
+    cookieStore.delete('token');
+    cookieStore.delete('user');
+    return { success: true, message: 'Sign out successful' };
+  } catch (error: any) {
+    return { success: true, message: 'Sign out failed' };
+  }
+};

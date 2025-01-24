@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-export type ThemeColors =
+export type ThemeColorsType =
   | 'Zinc'
   | 'Red'
   | 'Rose'
@@ -10,7 +10,7 @@ export type ThemeColors =
   | 'Yellow'
   | 'Violet';
 
-export interface ThemeColorStateParams {
-  themeColor: ThemeColors;
-  setThemeColor: Dispatch<SetStateAction<ThemeColors>>;
+export interface ThemeColorStateParamsType {
+  themeColor: ThemeColorsType;
+  setThemeColor: Dispatch<SetStateAction<ThemeColorsType>>;
 }

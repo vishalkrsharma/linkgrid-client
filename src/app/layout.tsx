@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import ThemeDataProvider from '@/providers/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import Navbar from '@/components/navbar';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -31,8 +32,10 @@ const RootLayout = ({
           enableSystem
           disableTransitionOnChange
         >
-          <ThemeDataProvider>{children}</ThemeDataProvider>
-          <Toaster />
+          <ThemeDataProvider>
+            <div className='min-h-screen'>{children}</div>
+            <Toaster />
+          </ThemeDataProvider>
         </NextThemeProvider>
       </body>
     </html>

@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Brand = ({
   className,
@@ -13,24 +14,27 @@ const Brand = ({
   showBrand?: boolean;
 }) => {
   return (
-    <div className={cn('flex justify-center items-center gap-4', className)}>
+    <Link
+      href='/'
+      className={cn('flex justify-center items-center gap-4 group', className)}
+    >
       <Image
         src='/images/logo.png'
         alt='LOGO'
         height={50}
         width={50}
-        className={cn('', logoClassName)}
+        className={cn('aspect-square', logoClassName)}
       />
       <div
         className={cn(
-          'text-5xl font-medium font-lora',
+          'font-semibold font-lora group-hover:underline',
           brandClassName,
           !showBrand && 'hidden',
         )}
       >
         LinkGrid
       </div>
-    </div>
+    </Link>
   );
 };
 

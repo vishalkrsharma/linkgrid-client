@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Eye, EyeClosed } from 'lucide-react';
-import { signinAction } from '@/app/actions/auth.action';
+import { signinAction } from '@/actions/auth.action';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 
@@ -42,6 +42,7 @@ const SigninForm = () => {
 
     toast({
       description: res.message,
+      variant: res.success ? 'default' : 'destructive',
     });
   };
 
@@ -56,7 +57,7 @@ const SigninForm = () => {
           name='identifier'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username/Email</FormLabel>
+              <FormLabel>Username or Email</FormLabel>
               <FormControl>
                 <Input
                   placeholder='Enter username or email...'
@@ -79,7 +80,7 @@ const SigninForm = () => {
                   type={passwordFieldType}
                   placeholder='Enter password...'
                   className='bg-background text-foreground'
-                  rightButton={
+                  rightElement={
                     <Button
                       type='button'
                       variant='outline'

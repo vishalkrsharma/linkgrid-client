@@ -4,7 +4,7 @@ import Brand from '@/components/brand';
 import { cn } from '@/lib/utils';
 import { useThemeContext } from '@/providers/theme-provider';
 
-const Header = ({ title, tagline }: { title: string; tagline?: string }) => {
+const Header = ({ tagline }: { tagline?: string }) => {
   const { themeColor } = useThemeContext();
 
   return (
@@ -16,7 +16,7 @@ const Header = ({ title, tagline }: { title: string; tagline?: string }) => {
           : 'text-white',
       )}
     >
-      <Brand />
+      <Brand brandClassName='text-5xl' />
       <div>{tagline}</div>
     </header>
   );

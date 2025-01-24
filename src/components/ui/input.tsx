@@ -5,13 +5,20 @@ import { cn } from '@/lib/utils';
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   containerClassName?: string;
-  leftButton?: React.ReactNode;
-  rightButton?: React.ReactNode;
+  leftElement?: React.ReactNode;
+  rightElement?: React.ReactNode;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, type, containerClassName, leftButton, rightButton, ...props },
+    {
+      className,
+      type,
+      containerClassName,
+      leftElement,
+      rightElement,
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -21,9 +28,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           containerClassName,
         )}
       >
-        {leftButton && (
+        {leftElement && (
           <div className='absolute left-2 top-1/2 transform -translate-y-1/2'>
-            {leftButton}
+            {leftElement}
           </div>
         )}
         <input
@@ -35,16 +42,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             placeholder:text-muted-foreground focus-visible:outline-none
             focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed
             disabled:opacity-50 md:text-sm`,
+            leftElement && 'pl-10',
+            rightElement && 'pr-10',
             className,
-            leftButton && 'pl-12',
-            rightButton && 'pr-12',
           )}
           ref={ref}
           {...props}
         />
-        {rightButton && (
+        {rightElement && (
           <div className='absolute right-0.5 top-1/2 transform -translate-y-1/2'>
-            {rightButton}
+            {rightElement}
           </div>
         )}
       </div>

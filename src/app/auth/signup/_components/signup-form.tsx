@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Eye, EyeClosed } from 'lucide-react';
-import { signupAction } from '@/app/actions/auth.action';
+import { signupAction } from '@/actions/auth.action';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 
@@ -46,6 +46,7 @@ const SignupForm = () => {
 
     toast({
       description: res.message,
+      variant: res.success ? 'default' : 'destructive',
     });
   };
 
@@ -100,7 +101,7 @@ const SignupForm = () => {
                   type={passwordFieldType}
                   placeholder='Enter password...'
                   className='bg-background text-foreground'
-                  rightButton={
+                  rightElement={
                     <Button
                       type='button'
                       variant='outline'
@@ -139,7 +140,7 @@ const SignupForm = () => {
                   type={confirmPasswordFieldType}
                   placeholder='Confirm password...'
                   className='bg-background text-foreground'
-                  rightButton={
+                  rightElement={
                     <Button
                       type='button'
                       variant='outline'

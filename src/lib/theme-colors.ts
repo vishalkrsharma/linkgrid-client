@@ -1,4 +1,4 @@
-import { ThemeColors } from '@/types/themes.type';
+import { ThemeColorsType } from '@/types/themes.type';
 
 const themes = {
   Zinc: {
@@ -445,7 +445,7 @@ const themes = {
 
 export default function setGlobalColorTheme(
   themeMode: 'light' | 'dark',
-  color: ThemeColors,
+  color: ThemeColorsType,
 ) {
   const theme = themes[color][themeMode] as {
     [ket: string]: string;
