@@ -30,10 +30,11 @@ const ProfileDropdown = ({ user }: { user: UserType }) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className='flex justify-start items-center gap-2 rounded-full hover:bg-muted p-2'>
         <Avatar username={user.username} imageUrl={user.imageUrl} />
+        <span>{user.username}</span>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className='w-full'>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Profile</DropdownMenuItem>

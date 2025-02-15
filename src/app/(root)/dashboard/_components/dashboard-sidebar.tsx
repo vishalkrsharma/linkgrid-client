@@ -1,3 +1,4 @@
+import DashboardSidebarFooter from '@/app/(root)/dashboard/_components/dashboard-sidebar-footer';
 import GridsList from '@/app/(root)/dashboard/_components/grids-list';
 import Brand from '@/components/brand';
 import Loader from '@/components/ui/loader';
@@ -20,7 +21,7 @@ const DashboardSidebar = () => {
         <Brand logoClassName='h-8 w-8' brandClassName='text-3xl' />
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
+        <SidebarGroup className='space-y-2'>
           <SidebarGroupLabel className='text-lg'>Grids</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -31,7 +32,11 @@ const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <Suspense fallback={<Loader />}>
+          <DashboardSidebarFooter />
+        </Suspense>
+      </SidebarFooter>
     </Sidebar>
   );
 };

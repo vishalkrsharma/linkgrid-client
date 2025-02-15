@@ -7,11 +7,12 @@ export const authApi = api;
 authApi.interceptors.request.use(
   async (config) => {
     const cookieStore = await cookies();
-    const tokenCookie = cookieStore.get('token');
-    const token = tokenCookie ? tokenCookie.value : null;
+    const accessTokenCookie = cookieStore.get('accessToken');
+    const accessToken = accessTokenCookie ? accessTokenCookie.value : null;
 
-    if (token) config.headers['Authorization'] = `Bearer ${token}`;
-    else await signoutAction();
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    } else await signoutAction();
 
     return config;
   },

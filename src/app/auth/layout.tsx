@@ -7,7 +7,7 @@ const AuthLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <main className='h-[calc(100vh-60px)] flex justify-center items-stretch'>
+    <main className='h-screen flex justify-center items-stretch'>
       <Header tagline='Your personalized link hub' />
       <div className='flex-1 flex justify-center items-center relative'>
         {children}

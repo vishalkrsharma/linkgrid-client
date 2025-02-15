@@ -5,8 +5,6 @@ export const getGrids = async (): Promise<ApiResponseType<GridType[]>> => {
   try {
     const res = await authApi.get('/grids');
 
-    console.log(res.data);
-
     return res.data;
   } catch (error: any) {
     return error.response.data;

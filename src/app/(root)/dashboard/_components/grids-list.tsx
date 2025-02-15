@@ -1,7 +1,6 @@
 import { getGrids } from '@/actions/grid.action';
+import GridListItem from '@/app/(root)/dashboard/_components/grid-list-item';
 import ErrorMessage from '@/components/error-message';
-import { SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
-import Link from 'next/link';
 
 const GridsList = async () => {
   const grids = await getGrids();
@@ -10,16 +9,8 @@ const GridsList = async () => {
 
   return (
     <>
-      {grids.data.map((grid) => {
-        return (
-          <SidebarMenuItem key={grid._id}>
-            <SidebarMenuButton asChild>
-              <Link href={'/dashboard/' + grid.identifier}>
-                {grid.identifier}
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        );
+      {grids?.data?.map((grid) => {
+        return <GridListItem grid={grid} key={grid._id} />;
       })}
     </>
   );

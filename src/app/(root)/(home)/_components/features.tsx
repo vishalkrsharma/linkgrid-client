@@ -16,7 +16,7 @@ const Features = () => {
           </li>
           <li>
             <span className='font-semibold'>Analytics & Insights</span> Track
-            clicks, engagement, and discover what's working best for your
+            clicks, engagement, and discover what&#39;s working best for your
             audience.
           </li>
           <li>
