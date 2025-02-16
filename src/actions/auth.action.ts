@@ -9,11 +9,9 @@ export const signupAction = async (values: SignupFormType) => {
   try {
     const { data } = await api.post('/auth/signup', values);
 
-    if (data.success) {
-      cookieStore.set('accessToken', data.data.tokens.accessToken);
-      cookieStore.set('refreshToken', data.data.tokens.refreshToken);
-      cookieStore.set('user', JSON.stringify(data.data.user));
-    }
+    cookieStore.set('accessToken', data.data.tokens.accessToken);
+    cookieStore.set('refreshToken', data.data.tokens.refreshToken);
+    cookieStore.set('user', JSON.stringify(data.data.user));
 
     return { success: true, message: data.message };
   } catch (error: any) {
@@ -29,11 +27,9 @@ export const signinAction = async (values: SigninFormType) => {
   try {
     const { data } = await api.post('/auth/signin', values);
 
-    if (data.success) {
-      cookieStore.set('accessToken', data.data.tokens.accessToken);
-      cookieStore.set('refreshToken', data.data.tokens.refreshToken);
-      cookieStore.set('user', JSON.stringify(data.data.user));
-    }
+    cookieStore.set('accessToken', data.data.tokens.accessToken);
+    cookieStore.set('refreshToken', data.data.tokens.refreshToken);
+    cookieStore.set('user', JSON.stringify(data.data.user));
 
     return { success: true, message: data.message };
   } catch (error: any) {
@@ -46,8 +42,10 @@ export const signinAction = async (values: SigninFormType) => {
 
 export const signoutAction = async () => {
   try {
-  
     const cookieStore = await cookies();
+
+    await api.get('/auth/signout');
+
     cookieStore.delete('accessToken');
     cookieStore.delete('refreshToken');
     cookieStore.delete('user');

@@ -41,12 +41,12 @@ export const isAuthenticated = async ({
         return true;
       } catch (refreshTokenError) {
         cookieStore.delete('refreshToken');
-        console.error('Refresh token expired or invalid:', refreshTokenError);
+        // console.error('Refresh token expired or invalid:', refreshTokenError);
         return false;
       }
     }
 
-    console.error('JWT Verification Error:', accessTokenError);
+    // console.error('JWT Verification Error:', accessTokenError);
     return false;
   }
 };
@@ -62,13 +62,12 @@ export async function middleware(request: NextRequest) {
 
   const isAuth = await isAuthenticated({ accessToken, refreshToken });
 
-  console.log('isAuth:', isAuth);
-
   if (
     !isAuth &&
     dashboardRoutes.some((route) => request.nextUrl.pathname.startsWith(route))
   ) {
-    cookieStore.delete('token');
+    cookieStore.delete('accessToken');
+    cookieStore.delete('refreshToken');
     cookieStore.delete('user');
 
     return NextResponse.redirect(new URL('/auth/signin', request.url));

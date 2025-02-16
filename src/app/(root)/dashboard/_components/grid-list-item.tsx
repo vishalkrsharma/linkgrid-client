@@ -1,12 +1,12 @@
 'use client';
 
-import { GridType } from '@/types/types';
+import { GridListType } from '@/types/types';
 import { SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
-const GridListItem = ({ grid }: { grid: GridType }) => {
+const GridListItem = ({ grid }: { grid: GridListType }) => {
   const pathname = usePathname();
 
   return (
@@ -15,10 +15,9 @@ const GridListItem = ({ grid }: { grid: GridType }) => {
         <Link
           className={cn(
             '',
-            pathname.includes(grid.identifier) &&
-              'bg-foreground text-background',
+            pathname.includes(grid._id) && 'bg-foreground text-background',
           )}
-          href={'/dashboard/' + grid.identifier}
+          href={'/dashboard/' + grid._id}
         >
           {grid.identifier}
         </Link>

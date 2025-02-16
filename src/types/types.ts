@@ -20,6 +20,18 @@ export type GridLinkType = {
   url: string;
 };
 
+export type GridListType = {
+  _id: string;
+  userId: string;
+  identifier: string;
+};
+
+export type GridPublicType = {
+  _id: string;
+  identifier: string;
+  links: GridLinkType[];
+};
+
 export type GridType = {
   _id: string;
   userId: string;

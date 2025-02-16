@@ -9,7 +9,7 @@ const ErrorMessage = ({
   className?: string;
 }) => {
   return (
-    <div className={cn('flex justify-center item-center', className)}>
+    <div className={cn('flex justify-center item-center h-full', className)}>
       {children}
     </div>
   );
