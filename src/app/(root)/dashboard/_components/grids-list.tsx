@@ -7,6 +7,8 @@ const GridsList = async () => {
 
   if (!grids?.success) return <ErrorMessage>{grids?.message}</ErrorMessage>;
 
+  console.log(grids);
+
   return (
     <>
       {grids?.data?.map((grid) => {

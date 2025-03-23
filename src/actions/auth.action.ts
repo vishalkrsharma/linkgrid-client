@@ -1,6 +1,7 @@
 'use server';
 
 import { api } from '@/lib/api';
+import { authApi } from '@/lib/auth-api';
 import { SigninFormType, SignupFormType } from '@/schemas/auth.schema';
 import { cookies } from 'next/headers';
 
@@ -44,14 +45,14 @@ export const signoutAction = async () => {
   try {
     const cookieStore = await cookies();
 
-    await api.get('/auth/signout');
+    await authApi.get('/auth/signout');
 
-    cookieStore.delete('accessToken');
-    cookieStore.delete('refreshToken');
-    cookieStore.delete('user');
+    // cookieStore.delete('accessToken');
+    // cookieStore.delete('refreshToken');
+    // cookieStore.delete('user');
 
     return { success: true, message: 'Sign out successful' };
   } catch (error: any) {
-    return { success: true, message: 'Sign out failed' };
+    return { success: false, message: 'Sign out failed' };
   }
 };
